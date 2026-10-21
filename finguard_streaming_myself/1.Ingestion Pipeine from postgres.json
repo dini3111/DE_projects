@@ -1,0 +1,33 @@
+{
+  "catalog": "finguard",
+  "channel": "PREVIEW",
+  "id": "56094947-0ff5-43a5-b1af-69054ef9b368",
+  "ingestion_definition": {
+    "connection_name": "postgres_neon_db",
+    "objects": [
+      {
+        "table": {
+          "destination_catalog": "finguard",
+          "destination_schema": "bronze",
+          "source_catalog": "neondb",
+          "source_schema": "public",
+          "source_table": "customers",
+          "table_configuration": {
+            "primary_keys": [
+              "customer_id"
+            ],
+            "query_based_connector_config": {
+              "cursor_columns": [
+                "update_timestamp"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "source_type": "POSTGRESQL"
+  },
+  "name": "postgres_to_databricks_pull",
+  "pipeline_type": "MANAGED_INGESTION",
+  "schema": "bronze"
+}
